@@ -208,12 +208,12 @@ def parseAnswers( answer_text ): #similar treatment as parseKeywords
     
     #formattedAnswer = set(word for word in answer_text.lower().translate( None , string.punctuation ).replace("answer" , " ").split() if word not in trivialWords )
 
-    formattedAnswer = SortedSet(word for word in answer_text.lower().translate({ord(c): None for c in string.punctuation}).replace("answer" , " ").split() if word not in trivialWords )
+    formattedAnswer = SortedSet(word for word in answer_text.lower().translate({ord(c): None for c in string.punctuation}).replace("answer" , " ").split() if word not in trivialWords and not word[0].isdigit() )
 
     return formattedAnswer
 #
 #
 #
 #
-if __name__ == '__main__': main()
-
+if __name__ == '__main__':
+    main()
